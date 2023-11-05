@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:pas_ecommerce/homescreen.dart';
 import 'package:pas_ecommerce/loginscreen.dart';
+import 'package:pas_ecommerce/pages/auth_page.dart';
 
 class OnboardingScreen extends StatelessWidget{
   

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pas_ecommerce/homescreen.dart';
 import 'package:pas_ecommerce/signupscreen.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class Singup extends StatelessWidget {
+  const Singup({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                       onPressed: (){
                         Navigator.push(context,
                          MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
+                          builder: (context) => HomePage(),
                           ));
                       },
                       child: Text(
