@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pas_ecommerce/widgets/text.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pas_ecommerce/utils/colors/colors.dart';
 
 class ShoppingItem extends StatelessWidget {
@@ -8,21 +9,27 @@ class ShoppingItem extends StatelessWidget {
   final String image;
   final double price;
   final bool isLiked;
+  final double rating;
 
   ShoppingItem({
     Key? key,
     required this.title,
     required this.description,
-     this.image = "assets/BG.jpg",
-     this.price = 12,
+    this.image = "assets/BG.jpg",
+    this.price = 12,
     this.isLiked = true,
+    this.rating = 4.5, // Rating bisa diubah sesuai kebutuhan
   });
 
   @override
   Widget build(BuildContext context) {
-   
-    return Container(
+    // Mendapatkan lebar layar
+    double screenWidth = MediaQuery.of(context).size.width;
 
+    // Menghitung tinggi gambar agar responsif
+    double imageHeight = screenWidth * 0.5;
+
+    return Container(
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -36,7 +43,6 @@ class ShoppingItem extends StatelessWidget {
           ),
         ],
       ),
-      
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -51,6 +57,7 @@ class ShoppingItem extends StatelessWidget {
                 child: Image.network(
                   image,
                   width: double.infinity,
+                  height: imageHeight,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -80,12 +87,25 @@ class ShoppingItem extends StatelessWidget {
                 SizedBox(height: 4),
                 text(
                   description,
-                  12,
+                  11,
                   db2_black,
                   FontWeight.normal,
                   maxLines: 2,
                 ),
               ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: RatingBarIndicator(
+              rating: rating,
+              itemBuilder: (context, index) => Icon(
+                Icons.star,
+                color: Colors.amber,
+              ),
+              itemCount: 5,
+              itemSize: 15.0,
+              direction: Axis.horizontal,
             ),
           ),
           Expanded(child: SizedBox()),

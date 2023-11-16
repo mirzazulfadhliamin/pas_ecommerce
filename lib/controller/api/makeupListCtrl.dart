@@ -4,29 +4,29 @@ import 'package:http/http.dart' as http;
 import 'package:pas_ecommerce/models/ProductResponseModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ControllerListProduct extends GetxController {
+class  MakeUpList extends GetxController {
   RxList<ProductResponseModel> productResponModelctr =
       <ProductResponseModel>[].obs;
-  SharedPreferences? prefs;
+  // SharedPreferences? prefs;
   RxBool isLoading = true.obs;
-  RxString sesionUsername = "".obs;
+  // RxString sesionUsername = "".obs;
 
-  void loadSesion() async {
-    prefs = await SharedPreferences.getInstance();
-    sesionUsername.value = prefs!.getString("username") ?? "no data";
-  }
+  // void loadSesion() async {
+  //   prefs = await SharedPreferences.getInstance();
+  //   sesionUsername.value = prefs!.getString("username") ?? "no data";
+  // }
 
   @override
   void onInit() {
     super.onInit();
-    loadSesion();
+    // loadSesion();
     LoadData();
   }
 
   LoadData() async {
     try {
       final response = await http.get(Uri.parse(
-          "https://fakestoreapi.com/products"));
+          "https://makeup-api.herokuapp.com/api/v1/products.json?brand=covergirl"));
 
       if (response.statusCode == 200) {
         //mengisi data dengan hasil json dari model

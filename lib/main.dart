@@ -4,8 +4,10 @@ import 'package:pas_ecommerce/homescreen.dart';
 import 'package:pas_ecommerce/onboarding.dart';
 import 'package:pas_ecommerce/pages/NavigationBar/BottomNavigationBar.dart';
 import 'package:pas_ecommerce/pages/auth_page.dart';
-import 'package:pas_ecommerce/pages/home.dart';
+
 import 'package:pas_ecommerce/provider/auth.dart';
+import 'package:pas_ecommerce/provider/home.dart';
+import 'package:pas_ecommerce/router/app_page.dart';
 import 'package:pas_ecommerce/splashscreen.dart';
 import 'package:provider/provider.dart';
 import 'package:get/get.dart';
@@ -25,12 +27,21 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(
             create: (context) => Autth(),
           ),
+          ChangeNotifierProvider(
+            create: (context) => HomeProvider(),
+          ),
         ],
         builder: (context, child) => Consumer<Autth>(
-              builder: (context, auth, child) => GetMaterialApp(
+              builder: (context, auth, child) => MaterialApp(
                 title: 'ECommerce',
                 debugShowCheckedModeBanner: false,
-                routes: {},
+                // initialRoute: SplashScreen.nameRoute,
+                routes: {
+                  SplashScreen.nameRoute: (context) => SplashScreen(),
+                  MyHomePage.nameRoute: (context) => MyHomePage(),
+                  LoginScreen.nameRoute: (context) => LoginScreen(),
+                  OnboardingScreen.nameRoute: (context) => OnboardingScreen(),
+                },
                 home: auth.isAuth
                     ? MyHomePage()
                     : FutureBuilder(

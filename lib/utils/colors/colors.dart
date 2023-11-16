@@ -29,6 +29,7 @@ const db1_purple = Color(0xFFB88DDD);
 const db1_green = Color(0xFFC2DB77);
 const db1_orange = Color(0xFFF5D270);
 const db1_dark_blue = Color(0xFF5FACC9);
+const db1_box = Color(0xFFF5F6FA);
 //<integer-array name="db2_category_colors">
 //<item>@color/db2_purple</item>
 //<item>@color/db2_green</item>

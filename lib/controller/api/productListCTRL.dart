@@ -1,14 +1,12 @@
-import 'dart:convert';
-
 import 'package:get/get.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:pas_ecommerce/models/ProductResponseModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../models/BarangResponseModel.dart';
 
-class ControllerListProduct extends GetxController {
-  RxList<Product> productResponModelctr = <Product>[].obs;
-
+class  ProductListCrl extends GetxController {
+  RxList<ProductResponseModel> productResponModelctr =
+      <ProductResponseModel>[].obs;
   SharedPreferences? prefs;
   RxBool isLoading = true.obs;
   RxString sesionUsername = "".obs;
@@ -27,14 +25,13 @@ class ControllerListProduct extends GetxController {
 
   LoadData() async {
     try {
-      final response =
-          await http.get(Uri.parse("https://dummyjson.com/products?limit=100"));
+      final response = await http.get(Uri.parse(
+          "https://fakestoreapi.com/products?limit=5"));
 
       if (response.statusCode == 200) {
-        // Mengurai data JSON menggunakan response model
-        final data = json.decode(response.body);
-        final productResponse = productResponseModelFromJson(json.encode(data));
-        productResponModelctr.value = productResponse.products;
+        //mengisi data dengan hasil json dari model
+        productResponModelctr.value =
+            productResponseModelFromJson(response.body);
       } else {
         print("Status Code : ${response.statusCode}");
       }

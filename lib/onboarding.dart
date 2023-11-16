@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 class OnboardingScreen extends StatelessWidget {
   final introKey = GlobalKey<IntroductionScreenState>();
+   static const nameRoute = '/onboarding';
 
   @override
   Widget build(BuildContext context) {

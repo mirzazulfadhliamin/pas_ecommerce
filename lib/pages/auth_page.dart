@@ -20,6 +20,7 @@ const users = const {
 class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
+   static const nameRoute = '/loginscreen';
 }
 
 class _LoginScreenState extends State<LoginScreen> {
@@ -69,6 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
       theme: LoginTheme(
         primaryColor: db7_dark_yellow,
         accentColor: db1_white,
+      
         titleStyle: TextStyle(
           color: db1_white,
           fontWeight: FontWeight.bold,
