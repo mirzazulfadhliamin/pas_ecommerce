@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget {
                           options: CarouselOptions(
                             onPageChanged: (index, reason) {
                               home.setActiveIndex(index);
-                              Provider.of<HomeProvider>(context, listen: true)
+                              Provider.of<HomeProvider>(context, listen: false)
                                   .setActiveIndex(index);
                             },
                             autoPlay: true,

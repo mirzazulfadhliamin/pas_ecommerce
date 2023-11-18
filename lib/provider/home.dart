@@ -18,7 +18,7 @@ class HomeProvider with ChangeNotifier {
   final List<Widget> pages = [
     HomePage(),
     NewsPage(),
-    CartPage(),
+    HistoryPage(),
     ProfilePage(),
   ];
 
