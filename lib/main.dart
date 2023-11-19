@@ -4,6 +4,7 @@ import 'package:pas_ecommerce/homescreen.dart';
 import 'package:pas_ecommerce/onboarding.dart';
 import 'package:pas_ecommerce/pages/NavigationBar/BottomNavigationBar.dart';
 import 'package:pas_ecommerce/pages/auth_page.dart';
+import 'package:pas_ecommerce/provider/api/ControllerListProduct.dart';
 
 import 'package:pas_ecommerce/provider/auth.dart';
 import 'package:pas_ecommerce/provider/home.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider(
             create: (context) => HomeProvider(),
+          ),
+         ChangeNotifierProvider(
+            create: (context) => ProductData(),
           ),
         ],
         builder: (context, child) => Consumer<Autth>(

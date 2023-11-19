@@ -75,8 +75,8 @@ class HomePage extends StatelessWidget {
                           options: CarouselOptions(
                             onPageChanged: (index, reason) {
                               home.setActiveIndex(index);
-                              Provider.of<HomeProvider>(context, listen: true)
-                                  .setActiveIndex(index);
+                              // Provider.of<HomeProvider>(context, listen: false)
+                              //     .setActiveIndex(index);
                             },
                             autoPlay: true,
                             enlargeCenterPage: true,
@@ -88,7 +88,7 @@ class HomePage extends StatelessWidget {
                             enlargeFactor: 0.2,
                             scrollDirection: Axis.horizontal,
                           ),
-                          itemCount: barang.productResponModelctr.length,
+                          itemCount: productController.productResponModelctr.length,
                           itemBuilder: (context, index, realIndex) {
                             final carouselSlider =
                                 productController.productResponModelctr[index];

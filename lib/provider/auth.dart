@@ -8,7 +8,6 @@ import 'dart:async';
 
 class Autth with ChangeNotifier {
   Timer? _authTimer;
-
   String? _idToken, userId;
   DateTime? _expiryDate;
   String? _tempidToken, tempuserId;
@@ -100,6 +99,7 @@ class Autth with ChangeNotifier {
       );
 
       var responseData = json.decode(response.body);
+      print(responseData);
 
       if (responseData['error'] != null) {
         throw responseData['error']["message"];

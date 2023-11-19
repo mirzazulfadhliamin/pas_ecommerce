@@ -12,32 +12,7 @@ class MyHomePage extends StatelessWidget {
     return Consumer<HomeProvider>(
       builder: (context, home, child) {
         return Scaffold(
-          // appBar: AppBar(
-          //   backgroundColor: db7_dark_yellow,
-          //   title: Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //     children: [
-          //       Image.asset(
-          //         'assets/splash 1.png',
-          //         width: 100,
-          //       ),
-          //       IconButton(
-          //         icon: const Icon(Icons.menu),
-          //         iconSize: 30,
-          //         onPressed: () {
-          //           // Aksi yang ingin Anda jalankan ketika hamburger (menu) ditekan
-          //         },
-          //       ),
-          //     ],
-          //   ),
-          //   bottom: PreferredSize(
-          //     preferredSize: const Size.fromHeight(4.0),
-          //     child: Container(
-          //       color: Colors.white.withOpacity(0.3),
-          //       height: 1.0,
-          //     ),
-          //   ),
-          // ),
+
           body: home.pages[home.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: home.currentIndex,

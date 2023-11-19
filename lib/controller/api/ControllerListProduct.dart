@@ -29,7 +29,7 @@ class ControllerListProduct extends GetxController {
   LoadData() async {
     try {
       final response =
-          await http.get(Uri.parse("https://dummyjson.com/products?limit=5"));
+          await http.get(Uri.parse("https://dummyjson.com/products?limit=10"));
 
       if (response.statusCode == 200) {
         // Mengurai data JSON menggunakan response model
