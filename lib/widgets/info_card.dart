@@ -14,7 +14,7 @@ class InfoCard extends StatelessWidget {
     super.key,
     required this.title,
     required this.imageUrl,
-    required this.height,
+    required this.height, required Color textColor,
   });
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class NewsPage extends StatefulWidget {
   @override
@@ -8,8 +9,9 @@ class NewsPage extends StatefulWidget {
 class _NewsPageState extends State<NewsPage> {
   List<bool> itemChecked = List.generate(10, (index) => false);
   List<int> itemQuantity = List.generate(10, (index) => 1);
-  List<double> itemPrices = List.generate(10, (index) => 19.99); // Harga item, sesuaikan sesuai kebutuhan
-  int notificationCount = 3; // Ubah sesuai dengan jumlah notifikasi yang Anda miliki
+  List<double> itemPrices = List.generate(10, (index) => 19.99);
+  List<double> itemRatings = List.generate(10, (index) => 4.5); // Rating item, sesuaikan sesuai kebutuhan
+  int notificationCount = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +20,10 @@ class _NewsPageState extends State<NewsPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Bagian Header
           Container(
             padding: EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 253, 170, 93), // Warna latar belakang header
+              color: Color.fromARGB(255, 253, 170, 93),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
@@ -38,7 +39,7 @@ class _NewsPageState extends State<NewsPage> {
                 Row(
                   children: [
                     Text(
-                      'Wishlist', // Ubah teks menjadi "Wishlist"
+                      'Wishlist',
                       style: TextStyle(color: Colors.white, fontSize: 24.0),
                     ),
                     Spacer(),
@@ -47,18 +48,19 @@ class _NewsPageState extends State<NewsPage> {
                       children: [
                         Icon(Icons.shopping_cart, color: Colors.white),
                         Positioned(
-                          bottom: 10, // Sesuaikan dengan kebutuhan Anda
+                          bottom: 8,
                           child: Container(
-                            padding: EdgeInsets.all(4.0),
+                            padding: EdgeInsets.all(1.0),
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Colors.red, // Warna lingkaran merah
+                              color: Colors.red,
                             ),
                             child: Text(
                               notificationCount.toString(),
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
+                                fontSize: 15,
                               ),
                             ),
                           ),
@@ -98,16 +100,14 @@ class _NewsPageState extends State<NewsPage> {
               ],
             ),
           ),
-          
-          // Bagian ListView dan Checklist
           Expanded(
             child: ListView.builder(
-              itemCount: 10, // Ganti dengan jumlah item yang sesuai
+              itemCount: 10,
               itemBuilder: (context, index) {
                 return Container(
                   margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                   decoration: BoxDecoration(
-                    color: Colors.white, // Warna latar belakang item
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(8.0),
                     boxShadow: [
                       BoxShadow(
@@ -134,13 +134,13 @@ class _NewsPageState extends State<NewsPage> {
                             borderRadius: BorderRadius.circular(4.0),
                             border: Border.all(color: Colors.black),
                             color: itemChecked[index]
-                                ? Color.fromARGB(255, 253, 170, 93) // Warna saat checklist dicentang
-                                : Colors.white, // Warna awal checklist
+                                ? Color.fromARGB(255, 253, 170, 93)
+                                : Colors.white,
                           ),
                           child: Center(
                             child: itemChecked[index]
-                                ? Icon(Icons.check, size: 12.0, color: Colors.white) // Tampilkan centang putih jika checklist dicentang
-                                : null, // Tidak menampilkan apapun jika checklist tidak dicentang
+                                ? Icon(Icons.check, size: 12.0, color: Colors.white)
+                                : null,
                           ),
                         ),
                       ),
@@ -171,9 +171,26 @@ class _NewsPageState extends State<NewsPage> {
                             style: TextStyle(color: Colors.black),
                           ),
                           Text(
-                            'Price: \$${itemPrices[index].toStringAsFixed(2)}', // Menampilkan harga dengan dua desimal
+                            'Price: \$${itemPrices[index].toStringAsFixed(2)}',
                             style: TextStyle(color: Colors.black),
                           ),
+                          SizedBox(height: 8.0),
+                          // RatingBar.builder(
+                          //   initialRating: itemRatings[index],
+                          //   minRating: 1,
+                          //   direction: Axis.horizontal,
+                          //   allowHalfRating: true,
+                          //   itemCount: 5,
+                          //   itemPadding: EdgeInsets.symmetric(horizontal: 0.0),
+                          //   itemBuilder: (context, _) => Icon(
+                          //     Icons.star,
+                          //     color: Colors.amber,
+                          //     size: 1, // Ukuran ikon bintang
+                          //   ),
+                          //   onRatingUpdate: (rating) {
+                          //     // Aksi yang ingin Anda lakukan ketika rating berubah
+                          //   },
+                          // ),
                         ],
                       ),
                       Spacer(),
