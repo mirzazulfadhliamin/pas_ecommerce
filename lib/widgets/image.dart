@@ -18,6 +18,7 @@ class CustomImageSliderItem extends StatelessWidget {
         image: DecorationImage(
           image: AssetImage(imagePath),
           fit: BoxFit.cover,
+          
         ),
       ),
       child: Stack(

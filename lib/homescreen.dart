@@ -74,9 +74,9 @@ class HomePage extends StatelessWidget {
                         CarouselSlider.builder(
                           options: CarouselOptions(
                             onPageChanged: (index, reason) {
-                              home.setActiveIndex(index);
-                              // Provider.of<HomeProvider>(context, listen: false)
-                              //     .setActiveIndex(index);
+                              // home.setActiveIndex(index);
+                              Provider.of<HomeProvider>(context, listen: false)
+                                  .setActiveIndex(index);
                             },
                             autoPlay: true,
                             enlargeCenterPage: true,
@@ -88,7 +88,7 @@ class HomePage extends StatelessWidget {
                             enlargeFactor: 0.2,
                             scrollDirection: Axis.horizontal,
                           ),
-                          itemCount: productController.productResponModelctr.length,
+                          itemCount: 3,
                           itemBuilder: (context, index, realIndex) {
                             final carouselSlider =
                                 productController.productResponModelctr[index];
@@ -101,8 +101,7 @@ class HomePage extends StatelessWidget {
                         ),
                         buildIndicator(
                           activeIndex: home.activeIndex,
-                          totalCount:
-                              productController.productResponModelctr.length,
+                          totalCount: 3,
                         ),
                         SizedBox(
                           height: containerSize,
