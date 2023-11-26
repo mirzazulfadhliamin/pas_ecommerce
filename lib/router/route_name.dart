@@ -7,4 +7,5 @@ abstract class RouteNames {
   static const detailPage = '/detailPage';
   static const splashscreen = '/spashscreen';
   static const setting = '/setting';
+   static const paymentPage = '/paymentPage';
 }

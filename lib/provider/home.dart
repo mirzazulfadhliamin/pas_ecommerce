@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:pas_ecommerce/pages/Menu/detailpage.dart';
 
-import '../homescreen.dart';
+import '../pages/Menu/homescreen.dart';
 import '../pages/Menu/CartPage.dart';
 import '../pages/Menu/NewsPage.dart';
 import '../pages/Menu/ProfilePage.dart';
@@ -20,6 +21,7 @@ class HomeProvider with ChangeNotifier {
     NewsPage(),
     HistoryPage(),
     ProfilePage(),
+    ProductDetailPage(),
   ];
 
   void setCurrentIndex(int index) {

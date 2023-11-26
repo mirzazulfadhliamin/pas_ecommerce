@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pas_ecommerce/homescreen.dart';
+import 'package:pas_ecommerce/pages/Menu/PaymentPage.dart';
+import 'package:pas_ecommerce/pages/Menu/homescreen.dart';
 import 'package:pas_ecommerce/onboarding.dart';
 import 'package:pas_ecommerce/pages/NavigationBar/BottomNavigationBar.dart';
 import 'package:pas_ecommerce/pages/auth_page.dart';
-
 import 'package:pas_ecommerce/provider/auth.dart';
 import 'package:pas_ecommerce/provider/home.dart';
 import 'package:pas_ecommerce/router/app_page.dart';
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           ),
         ],
         builder: (context, child) => Consumer<Autth>(
-              builder: (context, auth, child) => MaterialApp(
+              builder: (context, auth, child) => GetMaterialApp(
                 title: 'ECommerce',
                 debugShowCheckedModeBanner: false,
                 // initialRoute: SplashScreen.nameRoute,
@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
                   MyHomePage.nameRoute: (context) => MyHomePage(),
                   LoginScreen.nameRoute: (context) => LoginScreen(),
                   OnboardingScreen.nameRoute: (context) => OnboardingScreen(),
+                  '/paymentPage': (context) => PaymentPage(),
                 },
                 home: auth.isAuth
                     ? MyHomePage()
