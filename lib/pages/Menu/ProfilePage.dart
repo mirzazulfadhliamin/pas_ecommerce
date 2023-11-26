@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pas_ecommerce/provider/auth.dart';
 import 'package:pas_ecommerce/utils/colors/colors.dart';
-import 'package:pas_ecommerce/widgets/profile_avatar';
+import 'package:pas_ecommerce/widgets/profile_avatar.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -9,42 +9,50 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final auth = Provider.of<Autth>(context, listen: false);
     return Scaffold(
-      backgroundColor: db1_dark_blue,
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.only(top: 30),
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ProfileAvatar(),
               const SizedBox(height: 20),
-              const Text(
+              Text(
                 'ZOlfa',
-                style: TextStyle(color: Colors.white, fontSize: 24),
+                style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              const Text(
+              const SizedBox(height: 8),
+              Text(
                 'zolrrrr@gmail.com',
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                style: TextStyle(color: Colors.black, fontSize: 18),
               ),
               const SizedBox(height: 40),
-              CustomButton(
+              buildProfileButton(
                 icon: Icons.settings,
                 label: 'Account Settings',
-                onPressed: () {},
+                onPressed: () {
+                  // Tambahkan aksi saat tombol ditekan
+                },
               ),
-              const SizedBox(height: 10),
-              CustomButton(
+              const SizedBox(height: 16),
+              buildProfileButton(
                 icon: Icons.public,
                 label: 'Language',
-                onPressed: () {},
+                onPressed: () {
+                  // Tambahkan aksi saat tombol ditekan
+                },
               ),
-              const SizedBox(height: 10),
-              CustomButton(
+              const SizedBox(height: 16),
+              buildProfileButton(
                 icon: Icons.delete,
                 label: 'Clear Cache',
-                onPressed: () {},
+                onPressed: () {
+                  // Tambahkan aksi saat tombol ditekan
+                },
               ),
-              const SizedBox(height: 10),
-              CustomButton(
+              const SizedBox(height: 16),
+              buildProfileButton(
                 icon: Icons.logout,
                 label: 'Log Out',
                 onPressed: () {
@@ -52,6 +60,24 @@ class ProfilePage extends StatelessWidget {
                 },
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildProfileButton({required IconData icon, required String label, required VoidCallback onPressed}) {
+    return SizedBox(
+      width: 200,
+      child: ElevatedButton.icon(
+        onPressed: onPressed,
+        icon: Icon(icon),
+        label: Text(label),
+        style: ElevatedButton.styleFrom(
+          primary: Color.fromARGB(255, 253, 170, 93), // Warna latar belakang tombol
+          onPrimary: Colors.white, // Warna teks tombol
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
       ),

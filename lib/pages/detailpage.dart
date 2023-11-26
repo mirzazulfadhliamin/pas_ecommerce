@@ -12,3 +12,5 @@ class ProductDetailPage extends StatelessWidget {
     return const Placeholder();
   }
 }
+
+

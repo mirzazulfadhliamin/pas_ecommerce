@@ -4,7 +4,7 @@ import 'package:flutter_login/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pas_ecommerce/homescreen.dart';
+import 'package:pas_ecommerce/pages/Menu/homescreen.dart';
 import 'package:pas_ecommerce/onboarding.dart';
 import 'package:provider/provider.dart';
 import 'package:pas_ecommerce/provider/auth.dart';
@@ -20,7 +20,7 @@ const users = const {
 class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
-   static const nameRoute = '/loginscreen';
+  static const nameRoute = '/loginscreen';
 }
 
 class _LoginScreenState extends State<LoginScreen> {
@@ -70,7 +70,6 @@ class _LoginScreenState extends State<LoginScreen> {
       theme: LoginTheme(
         primaryColor: db7_dark_yellow,
         accentColor: db1_white,
-      
         titleStyle: TextStyle(
           color: db1_white,
           fontWeight: FontWeight.bold,
@@ -78,13 +77,10 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
       title: 'KENZOL',
-      // logo: AssetImage('assets/images/ecorp-lightblue.png'),
       onLogin: _authUserLogin,
       onSignup: _signupUser,
-
       onSubmitAnimationCompleted: () {
         Provider.of<Autth>(context, listen: false).tempData();
-        
       },
       onRecoverPassword: _recoverPassword,
     );

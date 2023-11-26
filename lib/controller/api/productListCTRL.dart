@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:pas_ecommerce/models/ProductResponseModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class  ProductListCrl extends GetxController {
+class ProductListCrl extends GetxController {
   RxList<ProductResponseModel> productResponModelctr =
       <ProductResponseModel>[].obs;
   SharedPreferences? prefs;
@@ -25,8 +25,8 @@ class  ProductListCrl extends GetxController {
 
   LoadData() async {
     try {
-      final response = await http.get(Uri.parse(
-          "https://fakestoreapi.com/products?limit=5"));
+      final response =
+          await http.get(Uri.parse("https://fakestoreapi.com/products"));
 
       if (response.statusCode == 200) {
         //mengisi data dengan hasil json dari model

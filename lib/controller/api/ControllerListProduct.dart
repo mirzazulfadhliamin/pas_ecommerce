@@ -29,12 +29,11 @@ class ControllerListProduct extends GetxController {
   LoadData() async {
     try {
       final response =
-          await http.get(Uri.parse("https://dummyjson.com/products?limit=5"));
+          await http.get(Uri.parse("https://dummyjson.com/products"));
 
       if (response.statusCode == 200) {
-        // Mengurai data JSON menggunakan response model
-        final data = json.decode(response.body);
-        final productResponse = productResponseModelFromJson(json.encode(data));
+
+        final productResponse = productResponseModelFromJson(response.body);
         productResponModelctr.value = productResponse.products;
       } else {
         print("Status Code : ${response.statusCode}");

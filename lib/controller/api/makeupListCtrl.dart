@@ -5,8 +5,7 @@ import 'package:pas_ecommerce/models/ProductResponseModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class  MakeUpList extends GetxController {
-  RxList<ProductResponseModel> productResponModelctr =
-      <ProductResponseModel>[].obs;
+  RxList<ProductResponseModel> productResponModelctr = <ProductResponseModel>[].obs;
   // SharedPreferences? prefs;
   RxBool isLoading = true.obs;
   // RxString sesionUsername = "".obs;
