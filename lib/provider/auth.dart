@@ -104,6 +104,7 @@ class Autth with ChangeNotifier {
       if (responseData['error'] != null) {
         throw responseData['error']["message"];
       }
+
       _tempidToken = responseData["idToken"];
       tempuserId = responseData["localId"];
       _tempexpiryDate = DateTime.now().add(
@@ -130,15 +131,6 @@ class Autth with ChangeNotifier {
     pref.clear();
 
     notifyListeners();
-  }
-
-  void _autologout() {
-    if (_authTimer != null) {
-      _authTimer!.cancel();
-    }
-    var timeToExpiry = _tempexpiryDate?.difference(DateTime.now()).inSeconds;
-    print(timeToExpiry);
-    _authTimer = Timer(Duration(seconds: 4), logout);
   }
 
   Future<bool> autoLogin() async {

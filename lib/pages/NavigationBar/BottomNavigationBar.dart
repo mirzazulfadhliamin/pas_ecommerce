@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pas_ecommerce/provider/api/ControllerListProduct.dart';
 import 'package:pas_ecommerce/utils/colors/colors.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -9,6 +10,8 @@ class MyHomePage extends StatelessWidget {
   static const nameRoute = '/homepage';
   @override
   Widget build(BuildContext context) {
+    ProductData product = Provider.of<ProductData>(context);
+    product.loadData();
     return Consumer<HomeProvider>(
       builder: (context, home, child) {
         return Scaffold(

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pas_ecommerce/provider/api/ControllerListProduct.dart';
 import 'package:pas_ecommerce/widgets/text.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pas_ecommerce/utils/colors/colors.dart';
+import 'package:provider/provider.dart';
+
+import '../pages/card/provider.dart';
 
 class ShoppingItem extends StatelessWidget {
   final String title;
@@ -10,23 +14,26 @@ class ShoppingItem extends StatelessWidget {
   final double price;
   final bool isLiked;
   final double rating;
+  final VoidCallback onTap;
 
   ShoppingItem({
     Key? key,
     required this.title,
     required this.description,
+    required this.onTap,
     this.image = "assets/BG.jpg",
     this.price = 12,
     this.isLiked = true,
-    this.rating = 4.5, // Rating bisa diubah sesuai kebutuhan
+    this.rating = 4.5,
   });
 
   @override
   Widget build(BuildContext context) {
-    // Mendapatkan lebar layar
+
+
     double screenWidth = MediaQuery.of(context).size.width;
 
-    // Menghitung tinggi gambar agar responsif
+
     double imageHeight = screenWidth * 0.5;
 
     return Container(
@@ -97,15 +104,22 @@ class ShoppingItem extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 8.0),
-            child: RatingBarIndicator(
-              rating: rating,
-              itemBuilder: (context, index) => Icon(
-                Icons.star,
-                color: Colors.amber,
-              ),
-              itemCount: 5,
-              itemSize: 15.0,
-              direction: Axis.horizontal,
+            child:   Row(
+              children: [
+                text("${rating ?? 0.0}", 10, db1_grey, FontWeight.normal),
+                RatingBarIndicator(
+                  rating: rating ?? 0.0,
+                  itemBuilder: (context, index) => Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
+                  itemCount: 5,
+                  itemSize: 15.0,
+                  direction: Axis.horizontal,
+                ),
+                SizedBox(width: 5),
+
+              ],
             ),
           ),
           Expanded(child: SizedBox()),
@@ -115,7 +129,7 @@ class ShoppingItem extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 8),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: onTap,
                   style: ElevatedButton.styleFrom(
                     primary: db1_green,
                   ),

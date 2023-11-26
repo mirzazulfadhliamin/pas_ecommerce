@@ -6,41 +6,58 @@ class HistoryPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Row(
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'History',
-              style: TextStyle(color: Colors.white), // Ubah warna teks title
+              style: TextStyle(color: Colors.white),
             ),
-            Spacer(),
-            Stack(
+            SizedBox(height: 4.0),
+            Text(
+              'Transaksi yang sudah kamu lakukan',
+              style: TextStyle(color: Colors.grey, fontSize: 12.0),
+            ),
+          ],
+        ),
+        actions: [
+          IconButton(
+            icon: Stack(
               alignment: Alignment.topRight,
               children: [
                 Icon(Icons.shopping_cart, color: Colors.white),
                 Positioned(
-                  bottom: 5,
+                  bottom: 8,
                   child: Container(
-                    padding: EdgeInsets.all(4.0),
+                    padding: EdgeInsets.all(1.0),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.red, // Warna lingkaran merah
+                      color: Colors.red,
                     ),
                     child: Text(
-                      '3', // Ubah sesuai dengan jumlah notifikasi yang Anda miliki
+                      '3',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
+                        fontSize: 15,
                       ),
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(width: 8.0),
-            Icon(Icons.notifications, color: Colors.white),
-          ],
-        ),
-        backgroundColor: Color.fromARGB(255, 253, 170, 93), // Ubah warna background appbar
+            onPressed: () {
+              // Aksi ketika tombol keranjang ditekan
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.notifications, color: Colors.white),
+            onPressed: () {
+              // Aksi ketika tombol notifikasi ditekan
+            },
+          ),
+        ],
+        backgroundColor: Color.fromARGB(255, 253, 170, 93),
         foregroundColor: Colors.white,
       ),
       body: ListView.builder(

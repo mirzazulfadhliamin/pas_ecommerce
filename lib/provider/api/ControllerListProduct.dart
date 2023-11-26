@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,10 +12,11 @@ import 'package:flutter/material.dart';
 
 class ProductData extends ChangeNotifier {
   List<Product> _products = [];
-  bool _isLoading = false;
+  bool isLoading = true;
 
   List<Product> get products => _products;
-  bool get isLoading => _isLoading;
+
+  bool get isLoadingData => isLoading;
 
   void loadSession() async {
     notifyListeners();
@@ -22,21 +24,20 @@ class ProductData extends ChangeNotifier {
 
   Future<void> loadData() async {
     try {
-      final response = await http.get(Uri.parse("https://dummyjson.com/products?limit=10"));
+      final response =
+      await http.get(Uri.parse("https://dummyjson.com/products"));
 
       if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        final productResponse = productResponseModelFromJson(json.encode(data));
-        _products = productResponse.products;
+         _products.assignAll(productResponseModelFromJson(response.body).products);
+         isLoading = false;
+         notifyListeners();
       } else {
-        print("Status Code : ${response.statusCode}");
+
+        print("Error: Status Code ${response.statusCode}");
       }
-      _isLoading = false;
     } catch (e) {
-      print("error: $e");
+      // Menangani kesalahan lainnya
+      print("Error: $e");
     }
-    notifyListeners();
   }
 }
-
-
